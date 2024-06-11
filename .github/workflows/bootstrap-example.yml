@@ -9,11 +9,6 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
 
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: "eu-west-1"
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -32,7 +27,11 @@ jobs:
     - name: Plan Terraform
       working-directory: ./examples/full
       run: terraform plan -out=tfplan -no-color -input=false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_PAT }}
 
     - name: Apply Terraform
       working-directory: ./examples/full
       run: terraform apply -auto-approve -input=false tfplan
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_PAT }}

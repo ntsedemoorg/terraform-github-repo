@@ -8,5 +8,5 @@ terraform {
 }
 
 provider "github" {
-    owner = "ntse"
+    owner = "ntsedemoorg"
 }
