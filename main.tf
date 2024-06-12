@@ -12,7 +12,7 @@ resource "github_repository" "repository" {
   has_projects           = false
   has_wiki               = false
   has_downloads          = false
-  is_template            = false
+  is_template            = var.is_template
 
   template {
     owner                = "ntse"

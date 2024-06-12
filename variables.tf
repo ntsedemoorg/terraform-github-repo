@@ -44,3 +44,9 @@ variable "delete_branch_on_merge" {
   type        = bool
   default     = false
 }
+
+variable "is_template" {
+  description = "Set to true to designate this repo as a template"
+  type = bool
+  default = false
+}
